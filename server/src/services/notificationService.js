@@ -1,5 +1,5 @@
 const webpush = require('web-push');
-const User = require('../models/User');
+const UserModel = require('../models/User.model');
 
 /**
  * Sends a push notification to all registered subscriptions of a user
@@ -8,7 +8,7 @@ const User = require('../models/User');
  */
 const sendPushNotification = async (userId, payload) => {
   try {
-    const user = await User.findById(userId);
+    const user = await UserModel.findUserById(userId);
     if (!user || !user.pushSubscriptions || user.pushSubscriptions.length === 0) {
       console.log(`No push subscriptions found for user ${userId}. Skipping.`);
       return;
@@ -36,7 +36,7 @@ const sendPushNotification = async (userId, payload) => {
       user.pushSubscriptions = user.pushSubscriptions.filter(
         (sub) => !failedSubscriptions.some((failed) => failed.endpoint === sub.endpoint)
       );
-      await user.save();
+      await UserModel.saveUser(user);
       console.log(`Cleaned up ${failedSubscriptions.length} expired subscription(s) for user ${userId}.`);
     }
   } catch (error) {
@@ -44,6 +44,52 @@ const sendPushNotification = async (userId, payload) => {
   }
 };
 
+/**
+ * Store a browser Web Push subscription object for a user
+ * @param {Object} user - Mongoose user document
+ * @param {Object} subscription - Web Push subscription object
+ * @returns {Promise<void>}
+ */
+const subscribeUser = async (user, subscription) => {
+  if (!subscription || !subscription.endpoint) {
+    const error = new Error('Invalid push subscription details');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  // Check if subscription already registered
+  const exists = user.pushSubscriptions.some(
+    (sub) => sub.endpoint === subscription.endpoint
+  );
+
+  if (!exists) {
+    user.pushSubscriptions.push(subscription);
+    await UserModel.saveUser(user);
+  }
+};
+
+/**
+ * Remove a browser Web Push subscription object for a user
+ * @param {Object} user - Mongoose user document
+ * @param {Object} subscription - Web Push subscription object
+ * @returns {Promise<void>}
+ */
+const unsubscribeUser = async (user, subscription) => {
+  if (!subscription || !subscription.endpoint) {
+    const error = new Error('Invalid push subscription details');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  // Remove the specified subscription
+  user.pushSubscriptions = user.pushSubscriptions.filter(
+    (sub) => sub.endpoint !== subscription.endpoint
+  );
+  await UserModel.saveUser(user);
+};
+
 module.exports = {
-  sendPushNotification
+  sendPushNotification,
+  subscribeUser,
+  unsubscribeUser
 };

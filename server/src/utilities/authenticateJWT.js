@@ -1,5 +1,5 @@
-const { verifyToken } = require('../utils/jwt');
-const User = require('../models/User');
+const { verifyToken } = require('./jwt');
+const UserModel = require('../models/User.model');
 
 const authenticateJWT = async (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -9,7 +9,7 @@ const authenticateJWT = async (req, res, next) => {
 
     try {
       const decoded = verifyToken(token);
-      const user = await User.findById(decoded.id);
+      const user = await UserModel.findUserById(decoded.id);
       if (!user) {
         return res.status(401).json({ error: 'User not found' });
       }

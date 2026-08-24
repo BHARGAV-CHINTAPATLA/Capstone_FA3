@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const EXERCISE_ICONS = {
@@ -24,6 +24,7 @@ const getIcon = (title) => {
  */
 const ExerciseCard = ({ exercise }) => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
   const icon = getIcon(exercise.title);
 
   return (
@@ -62,10 +63,10 @@ const ExerciseCard = ({ exercise }) => {
           <button
             className="btn btn-sm btn-outline-primary fw-semibold flex-grow-1"
             style={{ borderRadius: 7, fontSize: '0.8rem' }}
-            data-bs-toggle="collapse"
-            data-bs-target={`#steps-${exercise.id}`}
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <i className="bi bi-eye me-1"></i>View Details
+            <i className={`bi ${isOpen ? 'bi-eye-slash' : 'bi-eye'} me-1`}></i>
+            {isOpen ? 'Hide Details' : 'View Details'}
           </button>
           <button
             className="btn btn-sm btn-outline-secondary fw-semibold"
@@ -78,12 +79,12 @@ const ExerciseCard = ({ exercise }) => {
       </div>
 
       {/* Collapsible steps */}
-      {exercise.steps && exercise.steps.length > 0 && (
-        <div className="collapse border-top" id={`steps-${exercise.id}`}>
+      {exercise.instructions && exercise.instructions.length > 0 && (
+        <div className={`collapse border-top ${isOpen ? 'show' : ''}`} id={`steps-${exercise.id}`}>
           <div className="p-3" style={{ background: '#f8fafc' }}>
-            <div className="fw-semibold mb-2" style={{ fontSize: '0.82rem', color: '#374151' }}>Steps:</div>
+            <div className="fw-semibold mb-2" style={{ fontSize: '0.82rem', color: '#374151' }}>Instructions:</div>
             <ol className="ps-3 mb-0" style={{ fontSize: '0.8rem', color: '#5a6a7e' }}>
-              {exercise.steps.map((step, i) => (
+              {exercise.instructions.map((step, i) => (
                 <li key={i} className="mb-1">{step}</li>
               ))}
             </ol>

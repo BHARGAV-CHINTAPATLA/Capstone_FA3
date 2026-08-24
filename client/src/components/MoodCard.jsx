@@ -1,17 +1,38 @@
 import React from 'react';
 
 const MOOD_COLORS = {
-  Happy:   { bg: '#d1fae5', text: '#065f46' },
-  Sad:     { bg: '#dbeafe', text: '#1e40af' },
-  Anxious: { bg: '#fef3c7', text: '#92400e' },
-  Angry:   { bg: '#fee2e2', text: '#991b1b' },
-  Neutral: { bg: '#f3f4f6', text: '#374151' },
+  Happy:    { bg: '#d1fae5', text: '#065f46' },
+  Calm:     { bg: '#e0f7fa', text: '#006064' },
+  Neutral:  { bg: '#f3f4f6', text: '#374151' },
+  Sad:      { bg: '#dbeafe', text: '#1e40af' },
+  Anxious:  { bg: '#fef3c7', text: '#92400e' },
+  Stressed: { bg: '#f3e5f5', text: '#4a148c' },
+  Angry:    { bg: '#fee2e2', text: '#991b1b' },
+  Tired:    { bg: '#eceff1', text: '#263238' }
 };
 
-const MOOD_EMOJI = { Happy: '😊', Sad: '😔', Anxious: '😰', Angry: '😠', Neutral: '😐' };
+const MOOD_EMOJI = {
+  Happy: '😊',
+  Calm: '😌',
+  Neutral: '😐',
+  Sad: '😔',
+  Anxious: '😰',
+  Stressed: '😫',
+  Angry: '😠',
+  Tired: '😴'
+};
 
 export const getMoodColor = (mood) => {
-  const map = { Happy: '#22c55e', Sad: '#3b82f6', Anxious: '#f59e0b', Angry: '#ef4444', Neutral: '#6b7280' };
+  const map = {
+    Happy: '#22c55e',
+    Calm: '#06b6d4',
+    Neutral: '#6b7280',
+    Sad: '#3b82f6',
+    Anxious: '#f59e0b',
+    Stressed: '#a855f7',
+    Angry: '#ef4444',
+    Tired: '#64748b'
+  };
   return map[mood] || '#4a6fa5';
 };
 

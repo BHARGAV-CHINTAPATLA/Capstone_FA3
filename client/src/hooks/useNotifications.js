@@ -40,6 +40,12 @@ export const useNotifications = () => {
         const sub = await registration.pushManager.getSubscription();
         setSubscription(sub);
         setIsSubscribed(!!sub);
+        if (sub && localStorage.getItem('token')) {
+          // Sync subscription with backend to handle cases where DB was reset
+          await subscribePushNotifications(sub).catch(err => {
+            console.error('Failed to sync push subscription with server:', err);
+          });
+        }
       } catch (err) {
         console.error('Failed to get active push subscription:', err);
       }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useNotifications } from '../hooks/useNotifications';
 
 /**
  * Bootstrap 5 Navbar — light, clean, human-built look
@@ -9,6 +10,7 @@ const Navbar = () => {
   const { token, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  useNotifications();
 
   const handleLogout = () => {
     logout();

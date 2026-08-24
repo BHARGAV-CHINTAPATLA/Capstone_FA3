@@ -6,12 +6,30 @@ import NotificationPermissionPrompt from '../components/NotificationPermissionPr
 import { Link } from 'react-router-dom';
 
 const getMoodColor = (mood) => {
-  const colors = { Happy: '#22c55e', Sad: '#3b82f6', Anxious: '#f59e0b', Angry: '#ef4444', Neutral: '#6b7280' };
+  const colors = {
+    Happy: '#22c55e',
+    Calm: '#06b6d4',
+    Neutral: '#6b7280',
+    Sad: '#3b82f6',
+    Anxious: '#f59e0b',
+    Stressed: '#a855f7',
+    Angry: '#ef4444',
+    Tired: '#64748b'
+  };
   return colors[mood] || '#4a6fa5';
 };
 
 const getMoodEmoji = (mood) => {
-  const emojis = { Happy: '😊', Sad: '😔', Anxious: '😰', Angry: '😠', Neutral: '😐' };
+  const emojis = {
+    Happy: '😊',
+    Calm: '😌',
+    Neutral: '😐',
+    Sad: '😔',
+    Anxious: '😰',
+    Stressed: '😫',
+    Angry: '😠',
+    Tired: '😴'
+  };
   return emojis[mood] || '🙂';
 };
 
@@ -42,7 +60,16 @@ const Dashboard = () => {
   const latestEntry = history[0];
   const currentMood = latestEntry?.mood || null;
 
-  const moodCounts = { Happy: 0, Sad: 0, Anxious: 0, Angry: 0, Neutral: 0 };
+  const moodCounts = {
+    Happy: 0,
+    Calm: 0,
+    Neutral: 0,
+    Sad: 0,
+    Anxious: 0,
+    Stressed: 0,
+    Angry: 0,
+    Tired: 0
+  };
   history.forEach(item => {
     if (moodCounts[item.mood] !== undefined) moodCounts[item.mood]++;
   });

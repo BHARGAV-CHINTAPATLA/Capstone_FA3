@@ -1,16 +1,14 @@
 require('dotenv').config();
-const app = require('./app');
-const connectDB = require('./config/db');
-const configureWebPush = require('./config/webpush');
-const startReminderScheduler = require('./services/reminderScheduler');
-const MindfulnessExercise = require('./models/MindfulnessExercise');
+const app = require('./src/app');
+const { connectDB } = require('./src/utilities/connection');
+const MindfulnessExerciseModel = require('./src/models/MindfulnessExercise.model');
 
 const PORT = process.env.PORT || 5000;
 
 // Seed data helper
 const seedMindfulnessExercises = async () => {
   try {
-    const count = await MindfulnessExercise.countDocuments();
+    const count = await MindfulnessExerciseModel.countExercises();
     if (count === 0) {
       console.log('Seeding initial mindfulness exercises database...');
       const seedData = [
@@ -75,7 +73,7 @@ const seedMindfulnessExercises = async () => {
           duration: '15 mins'
         }
       ];
-      await MindfulnessExercise.insertMany(seedData);
+      await MindfulnessExerciseModel.insertExercises(seedData);
       console.log('Successfully seeded mindfulness exercises database.');
     } else {
       console.log('Mindfulness exercises already seeded in database.');
@@ -94,9 +92,16 @@ const startServer = async () => {
   await seedMindfulnessExercises();
 
   // Configure Web Push VAPID keys
+  app.get('/health', (req, res, next) => {
+    // Health check endpoint is defined in app.js, connectDB config is here
+  });
+  
+  // Configure Web Push VAPID keys (relocated utility)
+  const configureWebPush = require('./src/utilities/webpush');
   configureWebPush();
 
   // Start background reminder cron scheduler
+  const startReminderScheduler = require('./src/services/reminderScheduler');
   startReminderScheduler();
 
   // Listen

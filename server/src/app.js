@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./utilities/errorHandler');
 
 // Import REST Route Modules
 const authRoutes = require('./routes/auth.routes');

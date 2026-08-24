@@ -1,20 +1,17 @@
-const User = require('../models/User');
-const generateAnonymousUsername = require('../utils/anonymousUsernameGenerator');
-const asyncHandler = require('../utils/asyncHandler');
+const UserModel = require('../models/User.model');
+const generateAnonymousUsername = require('../utilities/anonymousUsernameGenerator');
 
 /**
  * Get matches for peer support
- * GET /api/v1/peer-support/users
- * Query filters: mood, affectingMood
+ * @param {string} currentUserId - The authenticated user's ID
+ * @param {Object} queryData - Filtering criteria { mood, affectingMood }
+ * @returns {Promise<Array>} List of matched peer support users
  */
-const getPeers = asyncHandler(async (req, res) => {
-  const { mood, affectingMood } = req.query;
+const getPeerSupportUsers = async (currentUserId, queryData) => {
+  const { mood, affectingMood } = queryData;
 
-  // Exclude current authenticated user
-  const query = { _id: { $ne: req.user._id } };
-
-  // Fetch candidate users
-  const users = await User.find(query);
+  // Fetch candidate users (all except current user)
+  const users = await UserModel.findAllUsersExcept(currentUserId);
   const matchedPeers = [];
 
   for (const user of users) {
@@ -55,9 +52,9 @@ const getPeers = asyncHandler(async (req, res) => {
     }
   }
 
-  res.status(200).json({ users: matchedPeers });
-});
+  return matchedPeers;
+};
 
 module.exports = {
-  getPeers
+  getPeerSupportUsers
 };

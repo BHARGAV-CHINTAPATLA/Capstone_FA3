@@ -1,5 +1,5 @@
 const cron = require('node-cron');
-const Reminder = require('../models/Reminder');
+const ReminderModel = require('../models/Reminder.model');
 const { sendPushNotification } = require('./notificationService');
 
 /**
@@ -24,7 +24,7 @@ const startReminderScheduler = () => {
       console.log(`[Reminder Scheduler] Tick at ${currentTimeStr}. Searching due reminders.`);
 
       // Query reminders that match current time string (HH:MM AM/PM)
-      const reminders = await Reminder.find({ time: { $regex: new RegExp(`^${currentTimeStr}$`, 'i') } });
+      const reminders = await ReminderModel.findRemindersByTimeRegex(new RegExp(`^${currentTimeStr}$`, 'i'));
 
       for (const reminder of reminders) {
         let isDue = false;
