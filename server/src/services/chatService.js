@@ -2,7 +2,7 @@ const ChatModel = require('../models/Chat.model');
 const MessageModel = require('../models/Message.model');
 const UserModel = require('../models/User.model');
 const generateAnonymousUsername = require('../utilities/anonymousUsernameGenerator');
-const { sendPushNotification } = require('./notificationService');
+// const { sendPushNotification } = require('./notificationService');
 
 /**
  * Resolve User ID from an anonymous username
@@ -141,7 +141,8 @@ const sendChatMessage = async (chatId, currentUserId, message) => {
   // Find recipient ID
   const recipientId = chat.participants.find(p => p.toString() !== currentUserId.toString());
   
-  // Trigger Push Notification to recipient
+  // Trigger Push Notification to recipient - DISABLED for chats per user requirements
+  /*
   const senderHandle = generateAnonymousUsername(currentUserId);
   await sendPushNotification(recipientId, {
     title: 'Mindmingle Chat',
@@ -151,6 +152,7 @@ const sendChatMessage = async (chatId, currentUserId, message) => {
       url: `/chats/${chatId}`
     }
   });
+  */
 
   return {
     id: msg._id,
