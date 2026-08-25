@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const EXERCISE_ICONS = {
@@ -20,77 +20,187 @@ const getIcon = (title) => {
 };
 
 /**
- * ExerciseCard — Bootstrap light card
+ * ExerciseCard
+ * Cards stay equal height always.
+ * "View Steps" opens a modal overlay — nothing is pushed or covered.
  */
 const ExerciseCard = ({ exercise }) => {
   const navigate = useNavigate();
   const icon = getIcon(exercise.title);
+  const [showModal, setShowModal] = useState(false);
+
+  const hasSteps = exercise.instructions && exercise.instructions.length > 0;
 
   return (
-    <div className="mm-card h-100 d-flex flex-column overflow-hidden">
-      {/* Colored top strip */}
-      <div style={{ height: 5, background: 'linear-gradient(90deg, #4a6fa5, #56b870)' }}></div>
+    <>
+      {/* ---- Card ---- */}
+      <div className="mm-card h-100 d-flex flex-column overflow-hidden">
+        {/* Top accent strip */}
+        <div style={{ height: 4, background: 'linear-gradient(90deg, #3d5f8f, #0891b2)' }}></div>
 
-      <div className="p-3 d-flex flex-column flex-grow-1">
-        {/* Icon + Title */}
-        <div className="d-flex align-items-start gap-2 mb-2">
-          <div className="rounded d-flex align-items-center justify-content-center"
-            style={{ width: 40, height: 40, background: '#f0f5fb', flexShrink: 0 }}>
-            <i className={`bi ${icon}`} style={{ color: '#4a6fa5', fontSize: '1.2rem' }}></i>
+        <div className="p-3 d-flex flex-column flex-grow-1">
+          {/* Icon + Title */}
+          <div className="d-flex align-items-start gap-2 mb-2">
+            <div
+              className="rounded d-flex align-items-center justify-content-center"
+              style={{ width: 38, height: 38, background: '#eef3fa', flexShrink: 0 }}
+            >
+              <i className={`bi ${icon}`} style={{ color: '#3d5f8f', fontSize: '1.15rem' }}></i>
+            </div>
+            <h6 className="fw-semibold mb-0 lh-sm" style={{ color: '#1e2a3a', fontSize: '0.93rem' }}>
+              {exercise.title}
+            </h6>
           </div>
-          <h6 className="fw-semibold mb-0 lh-sm" style={{ color: '#1a2332', fontSize: '0.95rem' }}>
-            {exercise.title}
-          </h6>
-        </div>
 
-        {/* Description */}
-        <p className="text-muted flex-grow-1" style={{ fontSize: '0.82rem', lineHeight: 1.5 }}>
-          {exercise.description}
-        </p>
+          {/* Description */}
+          <p className="text-muted flex-grow-1" style={{ fontSize: '0.82rem', lineHeight: 1.55 }}>
+            {exercise.description}
+          </p>
 
-        {/* Duration badge if present */}
-        {exercise.duration && (
-          <div className="mb-2">
-            <span className="badge bg-light text-muted border" style={{ fontSize: '0.72rem' }}>
-              <i className="bi bi-clock me-1"></i>{exercise.duration}
-            </span>
+          {/* Duration badge */}
+          {exercise.duration && (
+            <div className="mb-3">
+              <span className="badge bg-light text-muted border" style={{ fontSize: '0.7rem' }}>
+                <i className="bi bi-clock me-1"></i>{exercise.duration}
+              </span>
+            </div>
+          )}
+
+          {/* Action buttons */}
+          <div className="d-flex gap-2 mt-auto">
+            {hasSteps && (
+              <button
+                className="btn btn-sm fw-semibold flex-grow-1"
+                style={{
+                  borderRadius: 6,
+                  fontSize: '0.8rem',
+                  border: '1px solid #3d5f8f',
+                  color: '#3d5f8f',
+                  background: 'transparent',
+                }}
+                onClick={() => setShowModal(true)}
+              >
+                View Steps
+              </button>
+            )}
+            <button
+              className="btn btn-sm btn-outline-secondary fw-semibold"
+              style={{ borderRadius: 6, fontSize: '0.8rem' }}
+              onClick={() => navigate('/reminders', { state: { prefilledExercise: exercise.title } })}
+            >
+              <i className="bi bi-alarm me-1"></i>Remind
+            </button>
           </div>
-        )}
-
-        {/* Action buttons */}
-        <div className="d-flex gap-2 mt-auto pt-2">
-          <button
-            className="btn btn-sm btn-outline-primary fw-semibold flex-grow-1"
-            style={{ borderRadius: 7, fontSize: '0.8rem' }}
-            data-bs-toggle="collapse"
-            data-bs-target={`#steps-${exercise.id}`}
-          >
-            <i className="bi bi-eye me-1"></i>View Details
-          </button>
-          <button
-            className="btn btn-sm btn-outline-secondary fw-semibold"
-            style={{ borderRadius: 7, fontSize: '0.8rem' }}
-            onClick={() => navigate('/reminders', { state: { prefilledExercise: exercise.title } })}
-          >
-            <i className="bi bi-alarm me-1"></i>Remind
-          </button>
         </div>
       </div>
 
-      {/* Collapsible steps */}
-      {exercise.steps && exercise.steps.length > 0 && (
-        <div className="collapse border-top" id={`steps-${exercise.id}`}>
-          <div className="p-3" style={{ background: '#f8fafc' }}>
-            <div className="fw-semibold mb-2" style={{ fontSize: '0.82rem', color: '#374151' }}>Steps:</div>
-            <ol className="ps-3 mb-0" style={{ fontSize: '0.8rem', color: '#5a6a7e' }}>
-              {exercise.steps.map((step, i) => (
-                <li key={i} className="mb-1">{step}</li>
-              ))}
-            </ol>
+      {/* ---- Modal overlay — rendered in place, does not affect grid layout ---- */}
+      {showModal && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 1050,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem',
+          }}
+          onClick={() => setShowModal(false)}
+        >
+          {/* Backdrop */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'rgba(0,0,0,0.45)',
+            }}
+          />
+
+          {/* Dialog */}
+          <div
+            style={{
+              position: 'relative',
+              background: '#fff',
+              borderRadius: 12,
+              boxShadow: '0 8px 30px rgba(0,0,0,0.18)',
+              width: '100%',
+              maxWidth: 480,
+              maxHeight: '80vh',
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal header */}
+            <div
+              className="d-flex align-items-center justify-content-between p-3"
+              style={{ borderBottom: '1px solid #e5e7eb' }}
+            >
+              <div className="d-flex align-items-center gap-2">
+                <div
+                  className="rounded d-flex align-items-center justify-content-center"
+                  style={{ width: 34, height: 34, background: '#eef3fa', flexShrink: 0 }}
+                >
+                  <i className={`bi ${icon}`} style={{ color: '#3d5f8f', fontSize: '1rem' }}></i>
+                </div>
+                <div>
+                  <div className="fw-bold" style={{ fontSize: '0.93rem', color: '#1e2a3a' }}>
+                    {exercise.title}
+                  </div>
+                  {exercise.duration && (
+                    <span className="badge bg-light text-muted border" style={{ fontSize: '0.65rem' }}>
+                      <i className="bi bi-clock me-1"></i>{exercise.duration}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <button
+                className="btn btn-sm btn-light"
+                style={{ borderRadius: 6 }}
+                onClick={() => setShowModal(false)}
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
+
+            {/* Modal body — scrollable */}
+            <div className="p-3 overflow-auto">
+              <div className="fw-semibold mb-2" style={{ fontSize: '0.85rem', color: '#374151' }}>
+                Steps to follow:
+              </div>
+              <ol style={{ fontSize: '0.85rem', color: '#4b5563', paddingLeft: '1.25rem', margin: 0 }}>
+                {exercise.instructions.map((step, i) => (
+                  <li key={i} style={{ marginBottom: '0.5rem', lineHeight: 1.55 }}>{step}</li>
+                ))}
+              </ol>
+            </div>
+
+            {/* Modal footer */}
+            <div className="p-3 d-flex justify-content-end gap-2" style={{ borderTop: '1px solid #e5e7eb' }}>
+              <button
+                className="btn btn-sm btn-outline-secondary fw-semibold"
+                style={{ borderRadius: 6 }}
+                onClick={() => {
+                  setShowModal(false);
+                  navigate('/reminders', { state: { prefilledExercise: exercise.title } });
+                }}
+              >
+                <i className="bi bi-alarm me-1"></i>Set Reminder
+              </button>
+              <button
+                className="btn btn-sm btn-primary fw-semibold"
+                style={{ borderRadius: 6, background: '#3d5f8f', border: 'none' }}
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

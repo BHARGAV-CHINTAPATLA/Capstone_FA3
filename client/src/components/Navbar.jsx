@@ -20,11 +20,11 @@ const Navbar = () => {
   if (!token) return null;
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm sticky-top" style={{ zIndex: 1030 }}>
+    <nav className="navbar navbar-expand-lg bg-white sticky-top" style={{ borderBottom: '1px solid #d1d9e0', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', zIndex: 1030 }}>
       <div className="container">
         {/* Brand */}
-        <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/dashboard" style={{ color: '#4a6fa5', fontSize: '1.2rem' }}>
-          <i className="bi bi-heart-pulse-fill" style={{ color: '#ef4444' }}></i>
+        <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/dashboard" style={{ color: '#3d5f8f', fontSize: '1.25rem' }}>
+          <i className="bi bi-heart-pulse-fill" style={{ color: '#e53e3e' }}></i>
           MindMingle
         </Link>
 
@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* Nav links */}
         <div className="collapse navbar-collapse" id="navbarMain">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-1">
             <li className="nav-item">
               <Link className={isActive('/dashboard')} to="/dashboard">
                 <i className="bi bi-speedometer2 me-1"></i>Dashboard
@@ -76,13 +76,14 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {/* Logout button */}
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center ms-2">
             <button
-              className="btn btn-outline-danger btn-sm"
+              className="btn btn-sm btn-outline-secondary"
               onClick={handleLogout}
+              style={{ borderRadius: 6 }}
             >
-              <i className="bi bi-box-arrow-right me-1"></i>Logout
+              <i className="bi bi-box-arrow-right me-1"></i>
+              <span>Logout</span>
             </button>
           </div>
         </div>

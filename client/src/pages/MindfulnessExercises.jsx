@@ -43,7 +43,7 @@ const MindfulnessExercises = () => {
       ) : (
         <div className="row g-3">
           {exercises.map((exercise) => (
-            <div className="col-12 col-md-6 col-lg-4" key={exercise.id}>
+            <div className="col-12 col-md-6 col-lg-4" key={exercise._id}>
               <ExerciseCard exercise={exercise} />
             </div>
           ))}

@@ -74,15 +74,15 @@ const Dashboard = () => {
           <div className="mm-card p-3 h-100">
             <div className="d-flex align-items-center gap-2 mb-2">
               <div className="rounded-circle d-flex align-items-center justify-content-center"
-                style={{ width: 36, height: 36, background: '#e8f4fd', fontSize: '1rem' }}>
-                <i className="bi bi-emoji-smile text-primary"></i>
+                style={{ width: 36, height: 36, background: '#e8f0fb', fontSize: '1rem' }}>
+                <i className="bi bi-emoji-smile" style={{ color: '#3d5f8f' }}></i>
               </div>
               <span className="text-muted-sm fw-semibold">Current Mood</span>
             </div>
             {currentMood ? (
               <>
                 <div style={{ fontSize: '2rem' }}>{getMoodEmoji(currentMood)}</div>
-                <div className="fw-bold mt-1" style={{ color: getMoodColor(currentMood), fontSize: '1.1rem' }}>
+                <div className="fw-bold mt-1" style={{ color: getMoodColor(currentMood), fontSize: '1.05rem' }}>
                   {currentMood}
                 </div>
                 <div className="text-muted-sm mt-1">
@@ -101,11 +101,11 @@ const Dashboard = () => {
             <div className="d-flex align-items-center gap-2 mb-2">
               <div className="rounded-circle d-flex align-items-center justify-content-center"
                 style={{ width: 36, height: 36, background: '#f0fdf4', fontSize: '1rem' }}>
-                <i className="bi bi-journal-check" style={{ color: '#22c55e' }}></i>
+                <i className="bi bi-journal-check" style={{ color: '#16a34a' }}></i>
               </div>
               <span className="text-muted-sm fw-semibold">Total Logs</span>
             </div>
-            <div className="fw-bold" style={{ fontSize: '2rem', color: '#1a2332' }}>{totalEntries}</div>
+            <div className="fw-bold" style={{ fontSize: '2rem', color: '#1e2a3a' }}>{totalEntries}</div>
             <div className="text-muted-sm">mood entries recorded</div>
           </div>
         </div>
@@ -115,8 +115,8 @@ const Dashboard = () => {
           <div className="mm-card p-3 h-100">
             <div className="d-flex align-items-center gap-2 mb-2">
               <div className="rounded-circle d-flex align-items-center justify-content-center"
-                style={{ width: 36, height: 36, background: '#fef9ec', fontSize: '1rem' }}>
-                <i className="bi bi-bar-chart-fill" style={{ color: '#f59e0b' }}></i>
+                style={{ width: 36, height: 36, background: '#fffbeb', fontSize: '1rem' }}>
+                <i className="bi bi-bar-chart-fill" style={{ color: '#d97706' }}></i>
               </div>
               <span className="text-muted-sm fw-semibold">Most Frequent</span>
             </div>
@@ -141,7 +141,7 @@ const Dashboard = () => {
             <div className="text-muted-sm fw-semibold mb-3">Quick Actions</div>
             <div className="d-flex flex-column gap-2">
               <Link to="/mood-tracker" className="btn btn-sm btn-primary fw-semibold"
-                style={{ background: '#4a6fa5', border: 'none', borderRadius: 7 }}>
+                style={{ background: '#3d5f8f', border: 'none', borderRadius: 7 }}>
                 <i className="bi bi-plus-circle me-1"></i> Log Mood
               </Link>
               <Link to="/peer-support" className="btn btn-sm btn-outline-secondary fw-semibold"
