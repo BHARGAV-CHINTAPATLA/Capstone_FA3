@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { getReminders, createReminder, updateReminder, deleteReminder, getMindfulnessExercises } from '../api';
 import ReminderForm from '../components/ReminderForm';
+import { sortRemindersByTime } from '../components/ReminderBell';
 
 /**
  * Reminders Page — Bootstrap light layout
@@ -47,6 +48,7 @@ const Reminders = () => {
       setEditingReminder(null);
       const res = await getReminders();
       setReminders(res.data.reminders || []);
+      window.dispatchEvent(new Event('reminders-updated'));
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to save reminder.');
     }
@@ -58,6 +60,7 @@ const Reminders = () => {
       await deleteReminder(id);
       setSuccess('Reminder deleted.');
       setReminders(reminders.filter(r => r._id !== id));
+      window.dispatchEvent(new Event('reminders-updated'));
     } catch {
       setError('Failed to delete reminder.');
     }
@@ -119,7 +122,7 @@ const Reminders = () => {
                 </div>
               ) : (
                 <div className="d-flex flex-column gap-2">
-                  {reminders.map((reminder) => (
+                  {sortRemindersByTime(reminders).map((reminder) => (
                     <div key={reminder._id} className="d-flex align-items-center gap-3 p-3 rounded border bg-white">
                       <div className="rounded-circle d-flex align-items-center justify-content-center"
                         style={{ width: 42, height: 42, background: '#e8f4fd', flexShrink: 0 }}>

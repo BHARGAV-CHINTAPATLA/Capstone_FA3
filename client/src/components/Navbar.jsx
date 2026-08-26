@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useNotifications } from '../hooks/useNotifications';
+import ReminderBell from './ReminderBell';
 
 /**
  * Bootstrap 5 Navbar — light, clean, human-built look
@@ -85,6 +86,7 @@ const Navbar = () => {
 
           {/* Logout button */}
           <div className="d-flex align-items-center">
+            <ReminderBell />
             <button
               className="btn btn-outline-danger btn-sm"
               onClick={handleLogout}
