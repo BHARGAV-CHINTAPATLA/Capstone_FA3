@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const EXERCISE_ICONS = {
   'Deep Breathing': 'bi-wind',
+  'Box Breathing': 'bi-wind',
   'Guided Meditation': 'bi-peace',
   'Body Scan': 'bi-person-arms-up',
   'Progressive Muscle Relaxation': 'bi-activity',
@@ -10,6 +11,7 @@ const EXERCISE_ICONS = {
   'Journaling': 'bi-journal-text',
   'Visualization': 'bi-eye',
   'Gratitude': 'bi-stars',
+  'Stretching': 'bi-activity',
 };
 
 const getIcon = (title) => {
