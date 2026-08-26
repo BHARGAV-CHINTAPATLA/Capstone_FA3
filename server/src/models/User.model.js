@@ -29,6 +29,19 @@ const findUserByEmailWithPassword = async (email) => {
 };
 
 /**
+ * Finds a user by their Google subject identifier
+ * @param {string} googleId
+ * @returns {Promise<Object|null>} User document
+ */
+const findUserByGoogleId = async (googleId) => {
+  return User.findOne({ googleId });
+};
+
+const findUserByFacebookId = async (facebookId) => {
+  return User.findOne({ facebookId });
+};
+
+/**
  * Finds user by ID
  * @param {string} id 
  * @returns {Promise<Object|null>} User document
@@ -59,6 +72,8 @@ module.exports = {
   createUser,
   findUserByEmail,
   findUserByEmailWithPassword,
+  findUserByGoogleId,
+  findUserByFacebookId,
   findUserById,
   findAllUsersExcept,
   saveUser

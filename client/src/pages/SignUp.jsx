@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { signupUser } from '../api';
+import GoogleAuthButton from '../components/GoogleAuthButton';
+import FacebookAuthButton from '../components/FacebookAuthButton';
 
 /**
  * SignUp Page — Bootstrap light card form
@@ -134,6 +136,14 @@ const SignUp = () => {
                 )}
               </button>
             </form>
+
+            <div className="d-flex align-items-center gap-2 my-3 text-muted" style={{ fontSize: '0.8rem' }}>
+              <hr className="flex-grow-1" />
+              <span>OR</span>
+              <hr className="flex-grow-1" />
+            </div>
+            <GoogleAuthButton onError={setError} />
+            <div className="mt-2"><FacebookAuthButton onError={setError} /></div>
           </div>
         </div>
 

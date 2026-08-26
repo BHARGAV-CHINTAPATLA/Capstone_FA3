@@ -41,6 +41,8 @@ apiClient.interceptors.response.use(
 // Auth
 export const loginUser = (email, password) => apiClient.post('/auth/login', { email, password });
 export const signupUser = (email, password) => apiClient.post('/auth/signup', { email, password });
+export const googleAuth = (credential) => apiClient.post('/auth/google', { credential });
+export const facebookAuth = (accessToken) => apiClient.post('/auth/facebook', { accessToken });
 
 // Mood Tracking
 export const saveMood = (moodData) => apiClient.post('/mood-tracking', moodData);

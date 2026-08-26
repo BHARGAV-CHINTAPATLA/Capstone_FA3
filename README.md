@@ -44,6 +44,9 @@ Create a `.env` file in the `server` directory and copy the contents from `.env.
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/mindmingle
 JWT_SECRET=your_jwt_secret_key_here
+GOOGLE_CLIENT_ID=your_google_web_client_id
+FACEBOOK_APP_ID=your_facebook_app_id
+FACEBOOK_APP_SECRET=your_facebook_app_secret
 VAPID_PUBLIC_KEY=your_generated_vapid_public_key
 VAPID_PRIVATE_KEY=your_generated_vapid_private_key
 EMAIL_SENDER=mailto:support@mindmingle.com
@@ -54,6 +57,8 @@ NODE_ENV=development
 Create a `.env` file in the `client` directory and copy the contents from `.env.example`:
 ```env
 VITE_API_BASE_URL=http://localhost:5000/api/v1
+VITE_GOOGLE_CLIENT_ID=your_google_web_client_id
+VITE_FACEBOOK_APP_ID=your_facebook_app_id
 VITE_VAPID_PUBLIC_KEY=your_generated_vapid_public_key (must match server VAPID_PUBLIC_KEY)
 ```
 
@@ -93,6 +98,8 @@ All endpoints are versioned under `/api/v1`. Protected endpoints require `Author
 ### Authentication
 - `POST /api/v1/auth/signup` (Public) - Create user account. Payload: `{ email, password }`
 - `POST /api/v1/auth/login` (Public) - Authenticate credentials. Payload: `{ email, password }`
+- `POST /api/v1/auth/google` (Public) - Authenticate with a Google ID token. Payload: `{ credential }`
+- `POST /api/v1/auth/facebook` (Public) - Authenticate with a Facebook access token. Payload: `{ accessToken }`
 
 ### Mood Tracking
 - `POST /api/v1/mood-tracking` (Protected) - Log mood entry. Payload: `{ mood, affectingMood: [], description }`
