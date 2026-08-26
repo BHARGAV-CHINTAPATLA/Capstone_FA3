@@ -10,6 +10,7 @@ const reminderRoutes = require('./routes/reminder.routes');
 const peerSupportRoutes = require('./routes/peerSupport.routes');
 const chatRoutes = require('./routes/chat.routes');
 const notificationRoutes = require('./routes/notification.routes');
+const goalRoutes = require('./routes/goal.routes');
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/v1', reminderRoutes);
 app.use('/api/v1', peerSupportRoutes);
 app.use('/api/v1', chatRoutes);
 app.use('/api/v1', notificationRoutes);
+app.use('/api/v1', goalRoutes);
 
 // Basic health check endpoint
 app.get('/health', (req, res) => {

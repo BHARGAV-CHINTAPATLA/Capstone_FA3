@@ -72,6 +72,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className={isActive('/goals')} to="/goals">
+                <i className="bi bi-check2-circle me-1"></i>Goals
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className={isActive('/reminders')} to="/reminders">
                 <i className="bi bi-alarm me-1"></i>Reminders
               </Link>

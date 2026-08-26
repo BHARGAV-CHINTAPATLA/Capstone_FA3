@@ -57,6 +57,13 @@ export const createReminder = (reminder) => apiClient.post('/reminders', reminde
 export const updateReminder = (id, reminder) => apiClient.put(`/reminders/${id}`, reminder);
 export const deleteReminder = (id) => apiClient.delete(`/reminders/${id}`);
 
+// Goals CRUD
+export const getGoals = () => apiClient.get('/goals');
+export const createGoal = (goal) => apiClient.post('/goals', goal);
+export const updateGoal = (id, goal) => apiClient.patch(`/goals/${id}`, goal);
+export const toggleGoalDone = (id) => apiClient.patch(`/goals/${id}/toggle`);
+export const deleteGoal = (id) => apiClient.delete(`/goals/${id}`);
+
 // Peer Support
 export const getPeers = (filters = {}) => {
   const params = new URLSearchParams();

@@ -70,10 +70,20 @@ const validateMessage = (req, res, next) => {
   next();
 };
 
+const validateGoal = (req, res, next) => {
+  const { title } = req.body;
+  if (!title || typeof title !== 'string' || title.trim() === '') {
+    return res.status(400).json({ error: 'Goal title is required' });
+  }
+  next();
+};
+
 module.exports = {
   validateSignup,
   validateLogin,
   validateMood,
   validateReminder,
-  validateMessage
+  validateMessage,
+  validateGoal
 };
+

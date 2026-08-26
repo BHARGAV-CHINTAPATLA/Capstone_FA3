@@ -183,12 +183,43 @@ const ReminderSchema = new mongoose.Schema({
   }
 });
 
+// Goal Schema
+const GoalSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  linkedExercise: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'MindfulnessExercise',
+    default: null
+  },
+  isDoneToday: {
+    type: Boolean,
+    default: false
+  },
+  lastCheckedDate: {
+    type: Date,
+    default: null
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 // 3. Compile Mongoose Models
 const User = mongoose.model('User', UserSchema);
 const Chat = mongoose.model('Chat', ChatSchema);
 const Message = mongoose.model('Message', MessageSchema);
 const MindfulnessExercise = mongoose.model('MindfulnessExercise', MindfulnessExerciseSchema);
 const Reminder = mongoose.model('Reminder', ReminderSchema);
+const Goal = mongoose.model('Goal', GoalSchema);
 
 module.exports = {
   connectDB,
@@ -196,5 +227,7 @@ module.exports = {
   Chat,
   Message,
   MindfulnessExercise,
-  Reminder
+  Reminder,
+  Goal
 };
+

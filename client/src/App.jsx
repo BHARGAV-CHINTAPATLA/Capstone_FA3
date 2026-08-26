@@ -16,6 +16,7 @@ import PeerSupport from './pages/PeerSupport';
 import MindfulnessExercises from './pages/MindfulnessExercises';
 import Reminders from './pages/Reminders';
 import ChatPage from './pages/ChatPage';
+import Goals from './pages/Goals';
 
 /**
  * App Root — Bootstrap layout + light MUI theme for charts/dialogs
@@ -39,6 +40,7 @@ const App = () => {
                 <Route path="/mood-tracker" element={<ProtectedRoute><MoodTracker /></ProtectedRoute>} />
                 <Route path="/peer-support" element={<ProtectedRoute><PeerSupport /></ProtectedRoute>} />
                 <Route path="/mindfulness" element={<ProtectedRoute><MindfulnessExercises /></ProtectedRoute>} />
+                <Route path="/goals" element={<ProtectedRoute><Goals /></ProtectedRoute>} />
                 <Route path="/reminders" element={<ProtectedRoute><Reminders /></ProtectedRoute>} />
                 <Route path="/chat" element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
 
