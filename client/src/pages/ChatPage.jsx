@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { getChats } from '../api';
@@ -38,7 +38,7 @@ const ChatPage = () => {
     <div className="container py-4">
       <div className="mb-3">
         <h1 className="page-title">
-          <i className="bi bi-chat-dots me-2" style={{ color: '#4a6fa5' }}></i>
+          <i className="bi bi-chat-dots me-2" style={{ color: '#0F5257' }}></i>
           Anonymous Chat
         </h1>
         <p className="page-subtitle">
@@ -54,7 +54,7 @@ const ChatPage = () => {
 
       {loading ? (
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-          <CircularProgress style={{ color: '#4a6fa5' }} />
+          <CircularProgress style={{ color: '#0F5257' }} />
         </div>
       ) : (
         <div className="row g-0 mm-card overflow-hidden" style={{ height: '68vh' }}>
@@ -84,7 +84,7 @@ const ChatPage = () => {
                     >
                       <div className="d-flex align-items-center gap-2">
                         <div className="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center fw-bold"
-                          style={{ width: 34, height: 34, fontSize: '0.8rem', flexShrink: 0, background: '#4a6fa5' }}>
+                          style={{ width: 34, height: 34, fontSize: '0.8rem', flexShrink: 0, background: '#0F5257' }}>
                           {chat.peerAnonymousUsername?.charAt(0) || 'A'}
                         </div>
                         <div className="min-w-0">
@@ -127,3 +127,5 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
+
+

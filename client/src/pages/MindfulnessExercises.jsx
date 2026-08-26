@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { CircularProgress } from '@mui/material';
 import { getMindfulnessExercises } from '../api';
 import ExerciseCard from '../components/ExerciseCard';
@@ -22,7 +22,7 @@ const MindfulnessExercises = () => {
     <div className="container py-4">
       <div className="mb-4">
         <h1 className="page-title">
-          <i className="bi bi-peace me-2" style={{ color: '#4a6fa5' }}></i>
+          <i className="bi bi-peace me-2" style={{ color: '#0F5257' }}></i>
           Mindfulness Exercises
         </h1>
         <p className="page-subtitle">
@@ -38,7 +38,7 @@ const MindfulnessExercises = () => {
 
       {loading ? (
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '50vh' }}>
-          <CircularProgress style={{ color: '#4a6fa5' }} />
+          <CircularProgress style={{ color: '#0F5257' }} />
         </div>
       ) : (
         <div className="row g-3">
@@ -54,3 +54,5 @@ const MindfulnessExercises = () => {
 };
 
 export default MindfulnessExercises;
+
+

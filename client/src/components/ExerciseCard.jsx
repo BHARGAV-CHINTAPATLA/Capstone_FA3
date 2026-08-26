@@ -36,18 +36,18 @@ const ExerciseCard = ({ exercise }) => {
       {/* ---- Card ---- */}
       <div className="mm-card h-100 d-flex flex-column overflow-hidden">
         {/* Top accent strip */}
-        <div style={{ height: 4, background: 'linear-gradient(90deg, #3d5f8f, #0891b2)' }}></div>
+        <div style={{ height: 4, background: 'linear-gradient(90deg, #5B86A6, #0891b2)' }}></div>
 
         <div className="p-3 d-flex flex-column flex-grow-1">
           {/* Icon + Title */}
           <div className="d-flex align-items-start gap-2 mb-2">
             <div
               className="rounded d-flex align-items-center justify-content-center"
-              style={{ width: 38, height: 38, background: '#eef3fa', flexShrink: 0 }}
+              style={{ width: 38, height: 38, background: '#E6F4F1', flexShrink: 0 }}
             >
-              <i className={`bi ${icon}`} style={{ color: '#3d5f8f', fontSize: '1.15rem' }}></i>
+              <i className={`bi ${icon}`} style={{ color: '#0F5257', fontSize: '1.15rem' }}></i>
             </div>
-            <h6 className="fw-semibold mb-0 lh-sm" style={{ color: '#1e2a3a', fontSize: '0.93rem' }}>
+            <h6 className="fw-semibold mb-0 lh-sm" style={{ color: '#1A2E35', fontSize: '0.93rem' }}>
               {exercise.title}
             </h6>
           </div>
@@ -74,8 +74,8 @@ const ExerciseCard = ({ exercise }) => {
                 style={{
                   borderRadius: 6,
                   fontSize: '0.8rem',
-                  border: '1px solid #3d5f8f',
-                  color: '#3d5f8f',
+                  border: '1px solid #5B86A6',
+                  color: '#0F5257',
                   background: 'transparent',
                 }}
                 onClick={() => setShowModal(true)}
@@ -141,12 +141,12 @@ const ExerciseCard = ({ exercise }) => {
               <div className="d-flex align-items-center gap-2">
                 <div
                   className="rounded d-flex align-items-center justify-content-center"
-                  style={{ width: 34, height: 34, background: '#eef3fa', flexShrink: 0 }}
+                  style={{ width: 34, height: 34, background: '#E6F4F1', flexShrink: 0 }}
                 >
-                  <i className={`bi ${icon}`} style={{ color: '#3d5f8f', fontSize: '1rem' }}></i>
+                  <i className={`bi ${icon}`} style={{ color: '#0F5257', fontSize: '1rem' }}></i>
                 </div>
                 <div>
-                  <div className="fw-bold" style={{ fontSize: '0.93rem', color: '#1e2a3a' }}>
+                  <div className="fw-bold" style={{ fontSize: '0.93rem', color: '#1A2E35' }}>
                     {exercise.title}
                   </div>
                   {exercise.duration && (
@@ -191,7 +191,7 @@ const ExerciseCard = ({ exercise }) => {
               </button>
               <button
                 className="btn btn-sm btn-primary fw-semibold"
-                style={{ borderRadius: 6, background: '#3d5f8f', border: 'none' }}
+                style={{ borderRadius: 6, background: '#0F5257', border: 'none' }}
                 onClick={() => setShowModal(false)}
               >
                 Close
@@ -205,3 +205,5 @@ const ExerciseCard = ({ exercise }) => {
 };
 
 export default ExerciseCard;
+
+

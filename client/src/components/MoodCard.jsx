@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const MOOD_COLORS = {
   Happy:   { bg: '#d1fae5', text: '#065f46' },
@@ -12,7 +12,7 @@ const MOOD_EMOJI = { Happy: '😊', Sad: '😔', Anxious: '😰', Angry: '😠',
 
 export const getMoodColor = (mood) => {
   const map = { Happy: '#22c55e', Sad: '#3b82f6', Anxious: '#f59e0b', Angry: '#ef4444', Neutral: '#6b7280' };
-  return map[mood] || '#4a6fa5';
+  return map[mood] || '#0F5257';
 };
 
 /**
@@ -48,3 +48,5 @@ const MoodCard = ({ entry }) => {
 };
 
 export default MoodCard;
+
+

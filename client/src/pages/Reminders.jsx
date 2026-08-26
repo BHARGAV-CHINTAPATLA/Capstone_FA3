@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { getReminders, createReminder, updateReminder, deleteReminder, getMindfulnessExercises } from '../api';
@@ -67,7 +67,7 @@ const Reminders = () => {
     <div className="container py-4">
       <div className="mb-4">
         <h1 className="page-title">
-          <i className="bi bi-alarm me-2" style={{ color: '#4a6fa5' }}></i>
+          <i className="bi bi-alarm me-2" style={{ color: '#0F5257' }}></i>
           Wellness Reminders
         </h1>
         <p className="page-subtitle">
@@ -88,7 +88,7 @@ const Reminders = () => {
 
       {loading ? (
         <div className="d-flex justify-content-center py-5">
-          <CircularProgress style={{ color: '#4a6fa5' }} />
+          <CircularProgress style={{ color: '#0F5257' }} />
         </div>
       ) : (
         <div className="row g-4">
@@ -106,7 +106,7 @@ const Reminders = () => {
           <div className="col-12 col-md-7">
             <div className="mm-card p-3" style={{ minHeight: 300 }}>
               <h6 className="fw-semibold mb-3" style={{ color: '#374151' }}>
-                <i className="bi bi-list-check me-2" style={{ color: '#4a6fa5' }}></i>
+                <i className="bi bi-list-check me-2" style={{ color: '#0F5257' }}></i>
                 Your Scheduled Reminders
               </h6>
 
@@ -123,10 +123,10 @@ const Reminders = () => {
                     <div key={reminder._id} className="d-flex align-items-center gap-3 p-3 rounded border bg-white">
                       <div className="rounded-circle d-flex align-items-center justify-content-center"
                         style={{ width: 42, height: 42, background: '#e8f4fd', flexShrink: 0 }}>
-                        <i className="bi bi-alarm" style={{ color: '#4a6fa5', fontSize: '1.1rem' }}></i>
+                        <i className="bi bi-alarm" style={{ color: '#0F5257', fontSize: '1.1rem' }}></i>
                       </div>
                       <div className="flex-grow-1 min-w-0">
-                        <div className="fw-semibold text-truncate" style={{ fontSize: '0.88rem', color: '#1a2332' }}>
+                        <div className="fw-semibold text-truncate" style={{ fontSize: '0.88rem', color: '#1A2E35' }}>
                           {reminder.exercise}
                         </div>
                         <div className="text-muted-sm">
@@ -166,3 +166,5 @@ const Reminders = () => {
 };
 
 export default Reminders;
+
+

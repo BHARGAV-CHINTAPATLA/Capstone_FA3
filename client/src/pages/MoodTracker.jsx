@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveMood } from '../api';
 import MoodSelector from '../components/MoodSelector';
@@ -110,7 +110,7 @@ const MoodTracker = () => {
           <div className="mb-3 text-success" style={{ fontSize: '3rem' }}>
             <i className="bi bi-check-circle-fill"></i>
           </div>
-          <h2 className="fw-bold mb-3" style={{ color: '#1a2332' }}>Reflective Journal Saved</h2>
+          <h2 className="fw-bold mb-3" style={{ color: '#1A2E35' }}>Reflective Journal Saved</h2>
           <p className="text-muted mb-4" style={{ fontSize: '0.95rem' }}>
             Taking time to reflect is a powerful step in processing your emotions. Your thoughts have been recorded safely in your private journal history.
           </p>
@@ -145,7 +145,7 @@ const MoodTracker = () => {
                 setNeedRightNow('trackOnly');
                 setReflectionSaved(false);
               }}
-              style={{ background: '#4a6fa5', border: 'none', borderRadius: 8 }}
+              style={{ background: '#0F5257', border: 'none', borderRadius: 8 }}
             >
               Start New Check-in
             </button>
@@ -179,7 +179,7 @@ const MoodTracker = () => {
     <div className="container py-4" style={{ maxWidth: 700 }}>
       {/* Page Header */}
       <div className="mb-4">
-        <h1 className="fw-bold" style={{ color: '#1a2332', fontSize: '1.8rem' }}>
+        <h1 className="fw-bold" style={{ color: '#1A2E35', fontSize: '1.8rem' }}>
           How are you feeling today?
         </h1>
         <p className="text-muted mb-0" style={{ fontSize: '0.95rem' }}>
@@ -224,10 +224,10 @@ const MoodTracker = () => {
                   step="1"
                   value={intensity}
                   onChange={(e) => setIntensity(Number(e.target.value))}
-                  style={{ accentColor: '#4a6fa5' }}
+                  style={{ accentColor: '#0F5257' }}
                 />
                 <span className="text-muted-sm">High (5)</span>
-                <span className="badge bg-primary px-3 py-2" style={{ fontSize: '0.9rem', minWidth: 40, background: '#4a6fa5' }}>
+                <span className="badge bg-primary px-3 py-2" style={{ fontSize: '0.9rem', minWidth: 40, background: '#0F5257' }}>
                   {intensity}
                 </span>
               </div>
@@ -251,7 +251,7 @@ const MoodTracker = () => {
 
             {/* Optional Fields Container */}
             {showOptional && (
-              <div className="p-3 mb-4 rounded border" style={{ background: '#f8fafc', borderColor: '#e2e8f0' }}>
+              <div className="p-3 mb-4 rounded border" style={{ background: '#F0F9F7', borderColor: '#e2e8f0' }}>
                 
                 {/* 3. Factors Affecting Mood (Optional) */}
                 <div className="mb-4">
@@ -311,7 +311,7 @@ const MoodTracker = () => {
                       step="1"
                       value={energyLevel}
                       onChange={(e) => setEnergyLevel(Number(e.target.value))}
-                      style={{ accentColor: '#4a6fa5' }}
+                      style={{ accentColor: '#0F5257' }}
                     />
                     <span className="text-muted-sm" style={{ fontSize: '0.78rem' }}>High</span>
                     <span className="badge bg-secondary px-2.5 py-1.5" style={{ fontSize: '0.8rem', minWidth: 32 }}>
@@ -336,7 +336,7 @@ const MoodTracker = () => {
                       step="1"
                       value={sleepQuality}
                       onChange={(e) => setSleepQuality(Number(e.target.value))}
-                      style={{ accentColor: '#4a6fa5' }}
+                      style={{ accentColor: '#0F5257' }}
                     />
                     <span className="text-muted-sm" style={{ fontSize: '0.78rem' }}>Great</span>
                     <span className="badge bg-secondary px-2.5 py-1.5" style={{ fontSize: '0.8rem', minWidth: 32 }}>
@@ -364,8 +364,8 @@ const MoodTracker = () => {
                         style={{
                           borderRadius: '10px',
                           color: isActive ? '#fff' : '#4a5568',
-                          background: isActive ? '#4a6fa5' : '#fff',
-                          borderColor: isActive ? '#4a6fa5' : '#e2e8f0',
+                          background: isActive ? '#0F5257' : '#fff',
+                          borderColor: isActive ? '#0F5257' : '#e2e8f0',
                           transition: 'all 0.15s'
                         }}
                         onClick={() => setNeedRightNow(opt.value)}
@@ -385,7 +385,7 @@ const MoodTracker = () => {
                 type="submit"
                 className="btn btn-primary px-4 py-2.5 fw-semibold flex-grow-1 flex-sm-grow-0"
                 disabled={loading}
-                style={{ background: '#4a6fa5', border: 'none', borderRadius: 8 }}
+                style={{ background: '#0F5257', border: 'none', borderRadius: 8 }}
               >
                 {loading ? (
                   <><span className="spinner-border spinner-border-sm me-2" role="status"></span>Saving...</>
@@ -412,3 +412,5 @@ const MoodTracker = () => {
 };
 
 export default MoodTracker;
+
+

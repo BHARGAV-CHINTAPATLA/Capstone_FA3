@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+﻿import { createTheme } from '@mui/material/styles';
 
 /**
  * Light MUI theme — MUI is used for charts, dialogs, and data cards.
@@ -8,7 +8,7 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#4a6fa5',
+      main: '#0F5257',
       light: '#6b8fbf',
       dark: '#2f4f7f',
     },
@@ -18,11 +18,11 @@ const theme = createTheme({
       dark: '#3a9152',
     },
     background: {
-      default: '#f5f7fa',
+      default: '#9CA57D',
       paper: '#ffffff',
     },
     text: {
-      primary: '#1a2332',
+      primary: '#1A2E35',
       secondary: '#5a6a7e',
     },
     info: {
@@ -76,3 +76,6 @@ const theme = createTheme({
 });
 
 export default theme;
+
+
+

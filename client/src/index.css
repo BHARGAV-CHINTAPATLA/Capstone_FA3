@@ -1,6 +1,5 @@
-﻿/* ============================================================
-   MindMingle -- Global Styles
-   Bootstrap handles the heavy lifting; this is just overrides + custom bits
+/* ============================================================
+   MindMingle -- Global Styles  (Emerald & Crisp White theme)
    ============================================================ */
 
 *, *::before, *::after {
@@ -9,8 +8,8 @@
 
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  background-color: #f0f2f5;
-  color: #1e2a3a;
+  background-color: #9CA57D;
+  color: #1A2E35;
   margin: 0;
   padding: 0;
   line-height: 1.65;
@@ -27,27 +26,27 @@ body {
 .page-title {
   font-size: 1.55rem;
   font-weight: 700;
-  color: #1e2a3a;
+  color: #0F5257;
   margin-bottom: 4px;
 }
 
 .page-subtitle {
-  color: #64748b;
+  color: #4B6B72;
   font-size: 0.875rem;
   margin-bottom: 1.5rem;
 }
 
 /* ---- Generic card wrapper ---- */
 .mm-card {
-  background: #ffffff;
-  border: 1px solid #dde3ea;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(15, 82, 87, 0.05);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .mm-card:hover {
-  box-shadow: 0 5px 18px rgba(74, 111, 165, 0.14);
+  box-shadow: 0 8px 28px rgba(15, 82, 87, 0.1);
   transform: translateY(-2px);
 }
 
@@ -59,7 +58,7 @@ body {
   justify-content: center;
   gap: 6px;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #E2E8F0;
   border-radius: 10px;
   background: #fff;
   cursor: pointer;
@@ -67,20 +66,20 @@ body {
   min-width: 85px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #475569;
+  color: #4B6B72;
 }
 
 .mood-btn:hover {
-  border-color: #4a6fa5;
-  background: #eef3fa;
-  color: #4a6fa5;
+  border-color: #0F5257;
+  background: #E6F4F1;
+  color: #0F5257;
 }
 
 .mood-btn.active {
-  border-color: #4a6fa5;
-  background: #4a6fa5;
+  border-color: #0F5257;
+  background: #0F5257;
   color: #fff;
-  box-shadow: 0 3px 10px rgba(74, 111, 165, 0.28);
+  box-shadow: 0 3px 10px rgba(15, 82, 87, 0.28);
 }
 
 .mood-btn .mood-emoji {
@@ -103,26 +102,26 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 4px 13px;
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid #C8DDD9;
   border-radius: 999px;
   background: #fff;
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #64748b;
+  color: #4B6B72;
   transition: all 0.15s;
   user-select: none;
 }
 
 .factor-tag:hover {
-  border-color: #4a6fa5;
-  color: #4a6fa5;
-  background: #eef3fa;
+  border-color: #0F5257;
+  color: #0F5257;
+  background: #E6F4F1;
 }
 
 .factor-tag.active {
-  background: #4a6fa5;
-  border-color: #4a6fa5;
+  background: #0F5257;
+  border-color: #0F5257;
   color: #fff;
 }
 
@@ -132,6 +131,13 @@ body {
 .mood-badge-anxious { background: #fef9c3; color: #854d0e; }
 .mood-badge-angry   { background: #fee2e2; color: #991b1b; }
 .mood-badge-neutral { background: #f1f5f9; color: #374151; }
+
+/* ---- Accent badge (emerald tint) ---- */
+.badge-emerald {
+  background: #E6F4F1;
+  color: #0F5257;
+  border: 1px solid #A3E4D7;
+}
 
 /* ---- Chat bubbles ---- */
 .chat-bubble {
@@ -144,16 +150,16 @@ body {
 }
 
 .chat-bubble-self {
-  background: #4a6fa5;
+  background: #0F5257;
   color: #fff;
   border-bottom-right-radius: 3px;
   margin-left: auto;
 }
 
 .chat-bubble-peer {
-  background: #f8fafc;
-  color: #1e2a3a;
-  border: 1px solid #e2e8f0;
+  background: #F0F9F7;
+  color: #1A2E35;
+  border: 1px solid #C8DDD9;
   border-bottom-left-radius: 3px;
   margin-right: auto;
 }
@@ -166,7 +172,7 @@ body {
 
 /* ---- Peer cards ---- */
 .peer-card {
-  border: 1px solid #dde3ea;
+  border: 1px solid #E2E8F0;
   border-radius: 10px;
   background: #fff;
   overflow: hidden;
@@ -174,10 +180,11 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 20px rgba(15, 82, 87, 0.05);
 }
 
 .peer-card:hover {
-  box-shadow: 0 6px 20px rgba(74, 111, 165, 0.14);
+  box-shadow: 0 8px 28px rgba(15, 82, 87, 0.1);
   transform: translateY(-3px);
 }
 
@@ -200,14 +207,14 @@ body {
   color: #6b7280;
 }
 
-/* Active nav link gets a little underline indicator */
+/* Active nav link */
 .navbar .nav-link.active {
-  color: #4a6fa5 !important;
+  color: #0F5257 !important;
   font-weight: 600;
-  border-bottom: 2px solid #4a6fa5;
+  border-bottom: 2px solid #0F5257;
 }
 
-/* Nicer range slider */
+/* Range slider */
 input[type="range"] {
-  accent-color: #4a6fa5;
+  accent-color: #0F5257;
 }

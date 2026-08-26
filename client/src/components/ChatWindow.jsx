@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { CircularProgress } from '@mui/material';
 import { getChatMessages, postChatMessage } from '../api';
 
@@ -55,13 +55,13 @@ const ChatWindow = ({ chatId, peerAnonymousUsername }) => {
   return (
     <div className="d-flex flex-column h-100 bg-white">
       {/* Chat Header */}
-      <div className="d-flex align-items-center gap-2 px-3 py-2 border-bottom" style={{ background: '#f8fafc' }}>
+      <div className="d-flex align-items-center gap-2 px-3 py-2 border-bottom" style={{ background: '#F0F9F7' }}>
         <div className="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white"
-          style={{ width: 34, height: 34, background: '#4a6fa5', fontSize: '0.8rem', flexShrink: 0 }}>
+          style={{ width: 34, height: 34, background: '#0F5257', fontSize: '0.8rem', flexShrink: 0 }}>
           {peerAnonymousUsername?.charAt(0) || 'A'}
         </div>
         <div>
-          <div className="fw-semibold" style={{ fontSize: '0.88rem', color: '#1a2332' }}>
+          <div className="fw-semibold" style={{ fontSize: '0.88rem', color: '#1A2E35' }}>
             {peerAnonymousUsername}
           </div>
           <div className="text-muted-sm">
@@ -75,10 +75,10 @@ const ChatWindow = ({ chatId, peerAnonymousUsername }) => {
       </div>
 
       {/* Messages Area */}
-      <div className="flex-grow-1 overflow-auto p-3 d-flex flex-column gap-3" style={{ background: '#f5f7fa' }}>
+      <div className="flex-grow-1 overflow-auto p-3 d-flex flex-column gap-3" style={{ background: '#9CA57D' }}>
         {loading ? (
           <div className="d-flex justify-content-center align-items-center h-100">
-            <CircularProgress size={28} style={{ color: '#4a6fa5' }} />
+            <CircularProgress size={28} style={{ color: '#0F5257' }} />
           </div>
         ) : error ? (
           <div className="alert alert-danger py-2 mx-2" style={{ fontSize: '0.82rem' }}>{error}</div>
@@ -127,7 +127,7 @@ const ChatWindow = ({ chatId, peerAnonymousUsername }) => {
           type="submit"
           className="btn btn-primary d-flex align-items-center justify-content-center"
           disabled={loading || !newMessage.trim() || sending}
-          style={{ borderRadius: '50%', width: 40, height: 40, flexShrink: 0, background: '#4a6fa5', border: 'none', padding: 0 }}
+          style={{ borderRadius: '50%', width: 40, height: 40, flexShrink: 0, background: '#0F5257', border: 'none', padding: 0 }}
         >
           {sending ? (
             <span className="spinner-border spinner-border-sm" style={{ width: 16, height: 16 }}></span>
@@ -141,3 +141,6 @@ const ChatWindow = ({ chatId, peerAnonymousUsername }) => {
 };
 
 export default ChatWindow;
+
+
+

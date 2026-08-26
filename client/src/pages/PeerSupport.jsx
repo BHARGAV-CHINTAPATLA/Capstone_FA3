@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { getPeers, startChat } from '../api';
@@ -66,7 +66,7 @@ const PeerSupport = () => {
     <div className="container py-4">
       <div className="mb-4">
         <h1 className="page-title">
-          <i className="bi bi-people me-2" style={{ color: '#4a6fa5' }}></i>
+          <i className="bi bi-people me-2" style={{ color: '#0F5257' }}></i>
           Peer Support
         </h1>
         <p className="page-subtitle">
@@ -156,7 +156,7 @@ const PeerSupport = () => {
       {/* ── Results ── */}
       {loading ? (
         <div className="d-flex justify-content-center py-5">
-          <CircularProgress style={{ color: '#4a6fa5' }} />
+          <CircularProgress style={{ color: '#0F5257' }} />
         </div>
       ) : filteredPeers.length === 0 ? (
         <div className="text-center py-5 text-muted">
@@ -182,3 +182,5 @@ const PeerSupport = () => {
 };
 
 export default PeerSupport;
+
+

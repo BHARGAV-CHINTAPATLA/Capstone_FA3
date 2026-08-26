@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { signupUser } from '../api';
 
@@ -46,14 +46,14 @@ const SignUp = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ background: '#eef1f6' }}>
+    <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ background: '#9CA57D' }}>
       <div className="w-100" style={{ maxWidth: 410 }}>
         {/* Brand header */}
         <div className="text-center mb-4">
           <div className="mb-2" style={{ fontSize: '2.4rem' }}>
             <i className="bi bi-heart-pulse-fill" style={{ color: '#e53e3e' }}></i>
           </div>
-          <h1 className="h3 fw-bold" style={{ color: '#1e2a3a' }}>MindMingle</h1>
+          <h1 className="h3 fw-bold" style={{ color: '#1A2E35' }}>MindMingle</h1>
           <p className="text-muted" style={{ fontSize: '0.9rem' }}>Sign up to track your mood and support peers anonymously</p>
         </div>
 
@@ -125,7 +125,7 @@ const SignUp = () => {
                 type="submit"
                 className="btn btn-primary w-100 py-2 fw-semibold"
                 disabled={loading}
-                style={{ background: '#3d5f8f', border: 'none', borderRadius: 8 }}
+                style={{ background: '#0F5257', border: 'none', borderRadius: 8 }}
               >
                 {loading ? (
                   <><span className="spinner-border spinner-border-sm me-2" role="status"></span>Creating account...</>
@@ -139,7 +139,7 @@ const SignUp = () => {
 
         <p className="text-center mt-3 text-muted" style={{ fontSize: '0.88rem' }}>
           Already have an account?{' '}
-          <Link to="/login" className="fw-semibold text-decoration-none" style={{ color: '#3d5f8f' }}>
+          <Link to="/login" className="fw-semibold text-decoration-none" style={{ color: '#0F5257' }}>
             Login
           </Link>
         </p>
@@ -149,3 +149,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+

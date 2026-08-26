@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -26,7 +26,7 @@ const App = () => {
       <CssBaseline />
       <AuthProvider>
         <Router>
-          <div className="d-flex flex-column min-vh-100" style={{ background: '#f5f7fa' }}>
+          <div className="d-flex flex-column min-vh-100" style={{ background: '#9CA57D' }}>
             <Navbar />
             <main className="flex-grow-1">
               <Routes>
@@ -55,3 +55,6 @@ const App = () => {
 };
 
 export default App;
+
+
+

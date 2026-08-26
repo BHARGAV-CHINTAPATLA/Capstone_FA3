@@ -20,10 +20,10 @@ const Navbar = () => {
   if (!token) return null;
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white sticky-top" style={{ borderBottom: '1px solid #d1d9e0', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', zIndex: 1030 }}>
+    <nav className="navbar navbar-expand-lg sticky-top" style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', boxShadow: '0 1px 6px rgba(15, 82, 87, 0.06)', zIndex: 1030 }}>
       <div className="container">
         {/* Brand */}
-        <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/dashboard" style={{ color: '#3d5f8f', fontSize: '1.25rem' }}>
+        <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/dashboard" style={{ color: '#0F5257', fontSize: '1.25rem' }}>
           <i className="bi bi-heart-pulse-fill" style={{ color: '#e53e3e' }}></i>
           MindMingle
         </Link>
@@ -93,3 +93,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

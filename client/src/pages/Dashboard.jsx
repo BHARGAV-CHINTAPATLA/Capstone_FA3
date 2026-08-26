@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, Box, CircularProgress } from '@mui/material';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, PieChart, Pie, Legend } from 'recharts';
 import { getMoodHistory } from '../api';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const getMoodColor = (mood) => {
   const colors = { Happy: '#22c55e', Sad: '#3b82f6', Anxious: '#f59e0b', Angry: '#ef4444', Neutral: '#6b7280' };
-  return colors[mood] || '#4a6fa5';
+  return colors[mood] || '#0F5257';
 };
 
 const getMoodEmoji = (mood) => {
@@ -33,7 +33,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '70vh' }}>
-        <CircularProgress style={{ color: '#4a6fa5' }} />
+        <CircularProgress style={{ color: '#0F5257' }} />
       </div>
     );
   }
@@ -74,8 +74,8 @@ const Dashboard = () => {
           <div className="mm-card p-3 h-100">
             <div className="d-flex align-items-center gap-2 mb-2">
               <div className="rounded-circle d-flex align-items-center justify-content-center"
-                style={{ width: 36, height: 36, background: '#e8f0fb', fontSize: '1rem' }}>
-                <i className="bi bi-emoji-smile" style={{ color: '#3d5f8f' }}></i>
+                style={{ width: 36, height: 36, background: '#E6F4F1', fontSize: '1rem' }}>
+                <i className="bi bi-emoji-smile" style={{ color: '#0F5257' }}></i>
               </div>
               <span className="text-muted-sm fw-semibold">Current Mood</span>
             </div>
@@ -105,7 +105,7 @@ const Dashboard = () => {
               </div>
               <span className="text-muted-sm fw-semibold">Total Logs</span>
             </div>
-            <div className="fw-bold" style={{ fontSize: '2rem', color: '#1e2a3a' }}>{totalEntries}</div>
+            <div className="fw-bold" style={{ fontSize: '2rem', color: '#1A2E35' }}>{totalEntries}</div>
             <div className="text-muted-sm">mood entries recorded</div>
           </div>
         </div>
@@ -141,7 +141,7 @@ const Dashboard = () => {
             <div className="text-muted-sm fw-semibold mb-3">Quick Actions</div>
             <div className="d-flex flex-column gap-2">
               <Link to="/mood-tracker" className="btn btn-sm btn-primary fw-semibold"
-                style={{ background: '#3d5f8f', border: 'none', borderRadius: 7 }}>
+                style={{ background: '#0F5257', border: 'none', borderRadius: 7 }}>
                 <i className="bi bi-plus-circle me-1"></i> Log Mood
               </Link>
               <Link to="/peer-support" className="btn btn-sm btn-outline-secondary fw-semibold"
@@ -159,7 +159,7 @@ const Dashboard = () => {
         <div className="col-12 col-lg-7">
           <div className="mm-card p-3 h-100">
             <h6 className="fw-semibold mb-3" style={{ color: '#374151' }}>
-              <i className="bi bi-bar-chart me-2" style={{ color: '#4a6fa5' }}></i>
+              <i className="bi bi-bar-chart me-2" style={{ color: '#0F5257' }}></i>
               Mood Frequency Breakdown
             </h6>
             {chartData.length === 0 ? (
@@ -195,7 +195,7 @@ const Dashboard = () => {
         <div className="col-12 col-lg-5">
           <div className="mm-card p-3 h-100" style={{ maxHeight: 360, overflowY: 'auto' }}>
             <h6 className="fw-semibold mb-3" style={{ color: '#374151' }}>
-              <i className="bi bi-clock-history me-2" style={{ color: '#4a6fa5' }}></i>
+              <i className="bi bi-clock-history me-2" style={{ color: '#0F5257' }}></i>
               Recent Entries
             </h6>
             {history.length === 0 ? (
@@ -206,7 +206,7 @@ const Dashboard = () => {
               <div className="d-flex flex-column gap-2">
                 {history.slice(0, 8).map((entry, i) => (
                   <div key={entry._id || i} className="d-flex align-items-center gap-2 p-2 rounded"
-                    style={{ background: '#f8fafc', border: '1px solid #e8ecf0' }}>
+                    style={{ background: '#F0F9F7', border: '1px solid #e8ecf0' }}>
                     <span style={{ fontSize: '1.3rem' }}>{getMoodEmoji(entry.mood)}</span>
                     <div className="flex-grow-1">
                       <div className="fw-semibold" style={{ fontSize: '0.85rem', color: getMoodColor(entry.mood) }}>
@@ -235,3 +235,5 @@ const Dashboard = () => {
 
 export { getMoodColor };
 export default Dashboard;
+
+

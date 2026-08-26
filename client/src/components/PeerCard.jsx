@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const MOOD_COLORS = {
   Happy:   { bg: '#d1fae5', text: '#065f46', border: '#a7f3d0' },
@@ -32,11 +32,11 @@ const PeerCard = ({ peer, onChatStart }) => {
         {/* Anonymous Username */}
         <div className="d-flex align-items-center gap-2 mb-3">
           <div className="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white"
-            style={{ width: 36, height: 36, background: '#4a6fa5', fontSize: '0.82rem', flexShrink: 0 }}>
+            style={{ width: 36, height: 36, background: '#0F5257', fontSize: '0.82rem', flexShrink: 0 }}>
             {peer.anonymousUsername?.charAt(peer.anonymousUsername.length - 4) || 'A'}
           </div>
           <div>
-            <div className="fw-semibold" style={{ fontSize: '0.88rem', color: '#1a2332' }}>
+            <div className="fw-semibold" style={{ fontSize: '0.88rem', color: '#1A2E35' }}>
               {peer.anonymousUsername}
             </div>
             <div className="text-muted-sm">Anonymous User</div>
@@ -70,7 +70,7 @@ const PeerCard = ({ peer, onChatStart }) => {
         {/* Start Chat Button */}
         <button
           className="btn btn-primary btn-sm w-100 fw-semibold mt-auto"
-          style={{ background: '#4a6fa5', border: 'none', borderRadius: 8 }}
+          style={{ background: '#0F5257', border: 'none', borderRadius: 8 }}
           onClick={() => onChatStart(peer.anonymousUsername)}
         >
           <i className="bi bi-chat-dots me-1"></i>Start Chat
@@ -81,3 +81,5 @@ const PeerCard = ({ peer, onChatStart }) => {
 };
 
 export default PeerCard;
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 const FREQUENCIES = ['Daily', 'Weekly', 'Monthly'];
 
@@ -52,7 +52,7 @@ const ReminderForm = ({ initialValues, exercises, onSubmit, onCancel }) => {
   return (
     <div className="mm-card p-3">
       <h6 className="fw-semibold mb-3" style={{ color: '#374151' }}>
-        <i className={`bi ${initialValues?._id ? 'bi-pencil-square' : 'bi-plus-circle'} me-2`} style={{ color: '#4a6fa5' }}></i>
+        <i className={`bi ${initialValues?._id ? 'bi-pencil-square' : 'bi-plus-circle'} me-2`} style={{ color: '#0F5257' }}></i>
         {initialValues?._id ? 'Edit Reminder' : 'Add New Reminder'}
       </h6>
 
@@ -87,7 +87,7 @@ const ReminderForm = ({ initialValues, exercises, onSubmit, onCancel }) => {
                 key={freq}
                 type="button"
                 className={`btn btn-sm flex-grow-1 ${frequency === freq ? 'btn-primary' : 'btn-outline-secondary'}`}
-                style={{ borderRadius: 7, fontSize: '0.82rem', background: frequency === freq ? '#4a6fa5' : '', borderColor: frequency === freq ? '#4a6fa5' : '' }}
+                style={{ borderRadius: 7, fontSize: '0.82rem', background: frequency === freq ? '#0F5257' : '', borderColor: frequency === freq ? '#0F5257' : '' }}
                 onClick={() => setFrequency(freq)}
               >
                 {freq}
@@ -122,7 +122,7 @@ const ReminderForm = ({ initialValues, exercises, onSubmit, onCancel }) => {
           <button
             type="submit"
             className="btn btn-primary fw-semibold flex-grow-1"
-            style={{ background: '#4a6fa5', border: 'none', borderRadius: 8 }}
+            style={{ background: '#0F5257', border: 'none', borderRadius: 8 }}
           >
             <i className={`bi ${initialValues?._id ? 'bi-check-lg' : 'bi-alarm-fill'} me-1`}></i>
             {initialValues?._id ? 'Save Changes' : 'Set Reminder'}
@@ -139,3 +139,5 @@ const ReminderForm = ({ initialValues, exercises, onSubmit, onCancel }) => {
 };
 
 export default ReminderForm;
+
+
