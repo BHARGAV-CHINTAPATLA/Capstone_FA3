@@ -25,6 +25,7 @@ export const useNotifications = () => {
   const [permission, setPermission] = useState('default');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscription, setSubscription] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if ('Notification' in window) {
@@ -53,13 +54,27 @@ export const useNotifications = () => {
   };
 
   const subscribe = async () => {
+    setError(null);
+
+    if (!window.isSecureContext) {
+      setError('Notifications require HTTPS. localhost is supported for development.');
+      return false;
+    }
+
+    if (!('Notification' in window)) {
+      setError('This browser does not support notifications.');
+      return false;
+    }
+
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
       console.warn('Web Push notifications are not supported in this browser.');
+      setError('Push notifications are not supported in this browser.');
       return false;
     }
 
     if (!VAPID_PUBLIC_KEY) {
       console.error('VITE_VAPID_PUBLIC_KEY environment variable is not defined.');
+      setError('Push notifications are not configured.');
       return false;
     }
 
@@ -69,6 +84,7 @@ export const useNotifications = () => {
       setPermission(perm);
       if (perm !== 'granted') {
         console.warn('Notification permission denied.');
+        setError('Notification permission was not granted.');
         return false;
       }
 
@@ -91,6 +107,16 @@ export const useNotifications = () => {
       return true;
     } catch (err) {
       console.error('Error during push notification subscription:', err);
+      if (err.name === 'AbortError') {
+        const isBrave = Boolean(navigator.brave);
+        setError(isBrave
+          ? 'Brave rejected the push service request. Enable "Use Google services for push messaging" in brave://settings/privacy, allow notifications for this site, then reload.'
+          : 'The browser push service rejected this subscription. Try a current browser on HTTPS, disable strict privacy or VPN blocking, then reload the page.');
+      } else if (err.response) {
+        setError(err.response.data?.error || 'The subscription could not be saved to your account.');
+      } else {
+        setError('Could not enable notifications. Check the browser permission and try again.');
+      }
       return false;
     }
   };
@@ -120,6 +146,7 @@ export const useNotifications = () => {
     isSubscribed,
     subscribe,
     unsubscribe,
-    checkSubscription
+    checkSubscription,
+    error
   };
 };

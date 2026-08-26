@@ -140,6 +140,7 @@ const sendChatMessage = async (chatId, currentUserId, message) => {
 
   // Find recipient ID
   const recipientId = chat.participants.find(p => p.toString() !== currentUserId.toString());
+  const senderHandle = generateAnonymousUsername(currentUserId);
   
   // Trigger Push Notification to recipient - DISABLED for chats per user requirements
   /*
