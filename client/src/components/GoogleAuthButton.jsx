@@ -8,13 +8,6 @@ const GoogleAuthButton = ({ onError }) => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  if (!import.meta.env.VITE_GOOGLE_CLIENT_ID) {
-    return (
-      <p className="text-center text-muted mb-0" style={{ fontSize: '0.8rem' }}>
-        Google sign-in is not configured yet.
-      </p>
-    );
-  }
 
   const handleSuccess = async (credentialResponse) => {
     if (!credentialResponse.credential) {
