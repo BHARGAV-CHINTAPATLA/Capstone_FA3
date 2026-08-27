@@ -2,6 +2,8 @@
 
 Mindmingle is a full-stack MERN (MongoDB, Express, React, Node.js) application designed to promote mental wellness. The system supports JWT authentication, mood logging with triggers, scheduled wellness reminders via background cron tasks, anonymous peer support matching, secure chat messaging, and browser-based push notifications.
 
+For a code-grounded visual map of the architecture and user workflows, see [docs/WORKFLOWS.md](docs/WORKFLOWS.md).
+
 ---
 
 ## 1. System Architecture
